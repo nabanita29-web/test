@@ -19,11 +19,11 @@ app.post('/user', async (req, res) => {
     
     // Todo.query(`INSERT INTO users DEFAULT VALUES`)
     const { email, password } = req.body
-    Todo.query(`INSERT INTO users (email, password) VALUES (email, password)`)
+    Todo.query(`INSERT INTO users (email, password) VALUES (${email}, ${password})`)
     var result = await Todo.query(`SELECT * FROM users`)
     // res.redirect(`/${rows}`)
     // res.redirect(`/?q='rows'`)
-    res.json(req.body)
+    res.send(email)
     // res.send(req.body)
     // res.send(userid)
 })
