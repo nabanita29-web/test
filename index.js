@@ -34,8 +34,8 @@ app.post('/user', async (req, res) => {
 
 
  app.get('/getdata', async (req, res) => {
-    const email = req.query.e
-    const todo = await Todo.query(`select * from todos where email==$1`,[email])
+    const email = req.params.e
+    const todo = await Todo.query(`select * from todos where email=$1`,[email])
     // await Todo.query(`DELETE FROM todos`)
     res.json(todo)
 })
