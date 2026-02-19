@@ -11,7 +11,7 @@ app.set('view engine', 'ejs')
 Todo.connect().then(()=>console.log("Connected"))
 app.use(express.json())
 // app.use(cors())
-// Todo.query(`CREATE TABLE users(id SERIAL PRIMARY KEY, email TEXT, password TEXT)`)
+// Todo.query(`CREATE TABLE users(email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL)`)
 // Todo.query(`INSERT INTO users (email, password) VALUES ('naba@gmail.com', 'gvhvhv')`)
 
 // --------------------------------------------------------------
@@ -33,15 +33,12 @@ app.post('/user', async (req, res) => {
 // -----------------------------------------------------------------
 
 
-// app.get('/', async (req, res) => {
-    
-//     // const id = req.query.q
-//     // res.send(id)
-//     // Todo.query(`INSERT INTO todos (task, dateof,id) VALUES ('XYZ', date '2026-02-13',userid)`)
-//     const todo = await Todo.query(`select * from todos`)
-//     // await Todo.query(`DELETE FROM todos`)
-//     res.json(todo)
-// })
+ app.get('/getdata', async (req, res) => {
+    const email = req.query.e
+    const todo = await Todo.query(`select * from todos where email=$1`,[email])
+    // await Todo.query(`DELETE FROM todos`)
+    res.json(todo)
+})
 app.post('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
