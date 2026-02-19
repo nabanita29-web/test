@@ -15,7 +15,7 @@ app.use(express.json())
 // Todo.query(`INSERT INTO users (email, password) VALUES ('naba@gmail.com', 'gvhvhv')`)
 
 // --------------------------------------------------------------
-app.post('/user', async (req, res) => {
+app.get('/user', async (req, res) => {
     
     // Todo.query(`INSERT INTO users DEFAULT VALUES`)
     const email = req.body.key1
