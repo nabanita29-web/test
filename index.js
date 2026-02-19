@@ -23,7 +23,7 @@ app.post('/user', async (req, res) => {
     var result = await Todo.query(`SELECT * FROM users`)
     // res.redirect(`/${rows}`)
     // res.redirect(`/?q='rows'`)
-    // res.send(email)
+    res.send(email)
     // res.send(req.body)
     // res.send(userid)
 })
