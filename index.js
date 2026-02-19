@@ -15,7 +15,7 @@ app.use(express.json())
 // Todo.query(`INSERT INTO users (email, password) VALUES ('naba@gmail.com', 'gvhvhv')`)
 
 // --------------------------------------------------------------
-app.get('/user', async (req, res) => {
+app.post('/user', async (req, res) => {
     
     // Todo.query(`INSERT INTO users DEFAULT VALUES`)
 
@@ -23,7 +23,7 @@ app.get('/user', async (req, res) => {
     var result = await Todo.query(`SELECT * FROM users`)
     // res.redirect(`/${rows}`)
     // res.redirect(`/?q='rows'`)
-    res.json(result)
+    res.json(req.body)
     // res.send(req.body)
     // res.send(userid)
 })
