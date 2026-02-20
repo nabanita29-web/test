@@ -35,15 +35,10 @@ app.post('/user', async (req, res) => {
 
  app.get('/getdata', async (req, res) => {
     const email = req.query.e;
-    const todo = await Todo.query(`select * from users where email=$1`,[email]);
+    const todo = await Todo.query(`select * from users where email=$1`,[email])?res.send(1):res.send(0);
     // await Todo.query(`DELETE FROM todos`)
-    res.send(todo.rows);
-    if(todo.rows !== null){
-        res.send(1)
-    }
-    else{
-        res.send(0)
-    }
+    // res.send(todo.rows);
+    
     
 })
 app.post('/', (req, res) => {
