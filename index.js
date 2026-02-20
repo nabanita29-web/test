@@ -35,7 +35,7 @@ app.post('/user', async (req, res) => {
 
  app.get('/getdata', async (req, res) => {
     const email = req.query.e;
-    const todo = (await Todo.query(`select * from users where email=$1`,[email])).rowCount?res.send("success"):res.send("fail");
+    const todo = (await Todo.query(`select * from users where email=$1`,[email])).rowCount?res.send({"status": "s"}):res.send({"status": "f"});
     // await Todo.query(`DELETE FROM todos`)
     
 })
