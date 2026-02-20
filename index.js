@@ -38,6 +38,13 @@ app.post('/user', async (req, res) => {
     const todo = await Todo.query(`select * from users where email=$1`,[email]);
     // await Todo.query(`DELETE FROM todos`)
     res.send(todo.rows);
+    if(todo.rows !== null){
+        res.send(1)
+    }
+    else{
+        res.send(0)
+    }
+    
 })
 app.post('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
