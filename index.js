@@ -28,8 +28,23 @@ app.post('/user', async (req, res) => {
     // res.send(req.body)
     // res.send(userid)
 })
-
-
+//-------------------------------
+app.post('/todoing', async (req, res) => {
+    
+    // Todo.query(`INSERT INTO users DEFAULT VALUES`)
+    const task = req.body.key1;
+    const dateof = req.body.key2;
+    const id = req.body.key3;
+    const status = req.body.key4;
+    Todo.query(`INSERT INTO todos (task, dateof, id, status) VALUES ($1, $2, $3, $4)`,[task, dateof, id, status]);
+    var result = await Todo.query(`SELECT * FROM users`);
+    // res.redirect(`/${rows}`)
+    // res.redirect(`/?q='rows'`)
+    res.send(email);
+    // res.send(req.body)
+    // res.send(userid)
+})
+//----------------------------------------
 // -----------------------------------------------------------------
 
 
@@ -45,6 +60,13 @@ app.get('/checkdata', async (req, res) => {
     const password = req.query.pswd;
     const todo = (await Todo.query(`select * from users where email=$1 && password=$2`,[email, password])).rowCount?res.send({"status": "s"}):res.send({"status": "f"});
     // await Todo.query(`DELETE FROM todos`)
+    
+})
+app.get('/taketodos', async (req, res) => {
+    const id = req.query.e;
+    const todo = (await Todo.query(`select * from todos where id=$1`,[id]));
+    // await Todo.query(`DELETE FROM todos`)
+    res.send(todo.rows);
     
 })
 //------------------------
