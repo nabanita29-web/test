@@ -39,6 +39,15 @@ app.post('/user', async (req, res) => {
     // await Todo.query(`DELETE FROM todos`)
     
 })
+//------------------------
+app.get('/checkdata', async (req, res) => {
+    const email = req.query.e;
+    const password = req.query.pswd;
+    const todo = (await Todo.query(`select * from users where email=$1 && password=$2`,[email, password])).rowCount?res.send({"status": "s"}):res.send({"status": "f"});
+    // await Todo.query(`DELETE FROM todos`)
+    
+})
+//------------------------
 app.post('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
