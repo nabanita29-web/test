@@ -12,6 +12,7 @@ Todo.connect().then(()=>console.log("Connected"))
 app.use(express.json())
 // app.use(cors())
 // Todo.query(`CREATE TABLE users(email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL)`)
+
 // Todo.query(`INSERT INTO users (email, password) VALUES ('naba@gmail.com', 'gvhvhv')`)
 
 // --------------------------------------------------------------
@@ -52,7 +53,7 @@ app.post('/todoing', async (req, res) => {
     const email = req.query.e;
     const todo = (await Todo.query(`select * from users where email=$1`,[email])).rowCount?res.send({"status": "s"}):res.send({"status": "f"});
     // await Todo.query(`DELETE FROM todos`)
-    
+
 })
 //------------------------
 app.get('/checkdata', async (req, res) => {
