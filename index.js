@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const Todo = require('./models/todo_models.js')
 // const Todo = require("./models/todo_models")
-const cors = require('cors')
+// const cors = require('cors')
 // mongoose.connect('mongodb://127.0.0.1:27017/todo-crud')
 // mongoose.connect('mongodb://mongo:sEuUeLFnrNRZEfjoiRMcIHOIKYgIaQia@mongodb.railway.internal:27017')
 // .then(() => { console.log("DB connected") })
@@ -10,7 +10,7 @@ const cors = require('cors')
 app.set('view engine', 'ejs')
 Todo.connect().then(()=>console.log("Connected"))
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 // Todo.query(`CREATE TABLE users(email TEXT PRIMARY KEY NOT NULL, password TEXT NOT NULL)`)
 
 // Todo.query(`INSERT INTO users (email, password) VALUES ('naba@gmail.com', 'gvhvhv')`)
@@ -83,6 +83,6 @@ app.put('/', (req, res) => {
 app.delete('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
-app.listen(3000, () => {
+app.listen(3000, "localhost", () => {
     console.log("Successfully Connected")
 })
