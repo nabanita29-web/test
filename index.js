@@ -83,6 +83,6 @@ app.put('/', (req, res) => {
 app.delete('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
-app.listen(3000, "localhost", () => {
+app.listen(3000, "0.0.0.0", () => {
     console.log("Successfully Connected")
 })
