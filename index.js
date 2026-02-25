@@ -25,7 +25,7 @@ app.post('/user', async (req, res) => {
     var result = await Todo.query(`SELECT * FROM users`);
     // res.redirect(`/${rows}`)
     // res.redirect(`/?q='rows'`)
-    res.send(email);
+    // res.send(email);
     // res.send(req.body)
     // res.send(userid)
 })
@@ -38,10 +38,10 @@ app.post('/todoing', async (req, res) => {
     const id = req.body.key3;
     const status = req.body.key4;
     Todo.query(`INSERT INTO todos (task, dateof, id, status) VALUES ($1, $2, $3, $4)`,[task, dateof, id, status]);
-    var result = await Todo.query(`SELECT * FROM users`);
+    // var result = await Todo.query(`SELECT * FROM users`);
     // res.redirect(`/${rows}`)
     // res.redirect(`/?q='rows'`)
-    res.send(task);
+    // res.send(task);
     // res.send(req.body)
     // res.send(userid)
 })
@@ -71,6 +71,9 @@ app.get('/taketodos', async (req, res) => {
     
 })
 //------------------------
+app.get('/', (req, res) => {
+    res.send({"key": "check"})
+})
 app.post('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
@@ -80,6 +83,6 @@ app.put('/', (req, res) => {
 app.delete('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
-app.listen(3000,"0.0.0.0" ,() => {
+app.listen(3000, () => {
     console.log("Successfully Connected")
 })
