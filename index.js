@@ -80,6 +80,6 @@ app.put('/', (req, res) => {
 app.delete('/', (req, res) => {
     res.send("<h1>Hello!</h1>")
 })
-app.listen(3000, () => {
+app.listen(3000,"localhost" ,() => {
     console.log("Successfully Connected")
 })
